@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 use vars qw($VERSION @ISA);
-$VERSION = '0.01';
+$VERSION = '0.02';
 
 #--------------------------------------------------------------------------
 
@@ -110,24 +110,24 @@ sub search {
     
     $html =~ s/&amp;/&/g;
     $html =~ s/&nbsp;/ /g;
-#print STDERR "\n# content2=[\n$html\n]\n";
+#print STDERR "\n# html=[\n$html\n]\n";
 
     my $data;
     ($data->{isbn13})       = $html =~ m!<td width="25%"><b>ISBN13</b></td><td width="25%">([^<]+)!si;
     ($data->{isbn10})       = $html =~ m!<td width="25%"><b>ISBN</b></td><td width="25%">([^<]+)</td>!si;
-    ($data->{title})        = $html =~ m!<a title="Search for other items with this title" href="[^"]+"><h1>([^<]+)</h1></a>!si;
-    ($data->{author})       = $html =~ m!<a title="Search for other titles by this author"  href="[^"]+">([^<]+)</a>!si;
-    ($data->{binding})      = $html =~ m!<strong>Format:</strong>([^<]+)!si;
-    ($data->{publisher})    = $html =~ m!<strong>Publisher:</strong> <a title="Search for other titles from this publisher" href="[^"]+">([^<]+)</a>!si;
+    ($data->{title})        = $html =~ m!title="ISBN: $data->{isbn13} - ([^"]+)"!si;
+    ($data->{author})       = $html =~ m!title="Search for other titles by this author"[^>]+>([^<]+)</a>!si;
+    ($data->{binding})      = $html =~ m!<span class="product-info-label">\s*Format:\s*</span>([^<]+)<br />!si;
+    ($data->{publisher})    = $html =~ m!<span class="product-info-label">\s*Publisher:\s*</span><a [^>]+>([^<]+)</a>!si;
     ($data->{pubdate})      = $html =~ m!<td width="25%"><b>Publication date</b></td><td width="25%">([^<]+)</td>!si;
-    ($data->{description})  = $html =~ m{<div[^>]+id="biblio_0"[^>]+>\s*<div class="bl">\s*<div class="br">\s*<div class="content">\s*<p[^>]+>([^<]+)}si;
+    ($data->{description})  = $html =~ m{<p id="product-descr">([^<]+)}si;
     ($data->{pages})        = $html =~ m!<td width="25%"><b>Pages</b></td><td width="25%">([^<]+)</td>!si;
     ($data->{weight})       = $html =~ m!<td width="25%"><b>Weight \(grammes\)</b></td><td width="25%">([^<]+)</td>!si;
     ($data->{height})       = $html =~ m!<td width="25%"><b>Height \(mm\)</b></td><td width="25%">([^<]+)</td>!si;
     ($data->{width})        = $html =~ m!<td width="25%"><b>Width \(mm\)</b></td><td width="25%">([^<]+)</td>!si;
 
     ($data->{image},$data->{thumb})      
-                                = $html =~ m!<a href="([^"]+)"><img id="jacket"[^>]+src="([^"]+)"></a>!;
+                                = $html =~ m!<a href="([^"]+)"><img class="jacket".*?src="([^"]+)" /></a>!;
     $data->{thumb} = REFERER . $data->{thumb}   if($data->{thumb});
 
     $data->{publisher} =~ s/&#0?39;/'/g;
@@ -275,7 +275,7 @@ RT system (http://rt.cpan.org/Public/Dist/Display.html?Name=WWW-Scraper-ISBN-Bla
 However, it would help greatly if you are able to pinpoint problems or even
 supply a patch.
 
-Fixes are dependant upon their severity and my availablity. Should a fix not
+Fixes are dependent upon their severity and my availability. Should a fix not
 be forthcoming, please feel free to (politely) remind me.
 
 =head1 AUTHOR
@@ -285,7 +285,7 @@ be forthcoming, please feel free to (politely) remind me.
 
 =head1 COPYRIGHT & LICENSE
 
-  Copyright (C) 2010 Barbie for Miss Barbell Productions
+  Copyright (C) 2010-2012 Barbie for Miss Barbell Productions
 
   This module is free software; you can redistribute it and/or
   modify it under the Artistic Licence v2.
