@@ -1,6 +1,6 @@
 {
     "name": "WWW-Scraper-ISBN-Blackwell_Driver",
-    "version": "0.02",
+    "version": "0.03",
     "abstract": "Search driver for Blackwell's online book catalog",
     "author": ["Barbie <barbie@cpan.org>"],
 
@@ -44,7 +44,7 @@
     "provides": {
         "WWW::Scraper::ISBN::Blackwell_Driver": {
             "file": "lib/WWW/Scraper/ISBN/Blackwell_Driver.pm",
-            "version": "0.02"
+            "version": "0.03"
         }
     },
     "no_index": {

@@ -1,7 +1,6 @@
 #!/usr/bin/perl -w
 use strict;
 
-use lib './t';
 use Test::More tests => 40;
 use WWW::Scraper::ISBN;
 
@@ -21,10 +20,10 @@ my %tests = (
         [ 'is',     'publisher',    'Elsevier Science & Technology'    ],
         [ 'is',     'pubdate',      '10 Dec 2004'       ],
         [ 'is',     'binding',      'Paperback'         ],
-        [ 'is',     'pages',        '600'               ],
+        [ 'is',     'pages',        '602'               ],
         [ 'is',     'width',        '191'               ],
         [ 'is',     'height',       '235'               ],
-        [ 'is',     'weight',       '1000'              ],
+        [ 'is',     'weight',       '1021'              ],
         [ 'like',   'image_link',   qr|http://bookshop.blackwell.co.uk/jsp/display_large_jacket.jsp;jsessionid=[\w.]+\?isbn=9781558607019| ],
         [ 'is',     'thumb_link',   'http://bookshop.blackwell.co.uk/images/jackets/m/15/1558607013.jpg' ],
         [ 'like',   'description',  qr|Most Perl programmers were originally trained as C and Unix programmers,| ],
