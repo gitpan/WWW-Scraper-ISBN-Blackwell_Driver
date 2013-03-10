@@ -15,13 +15,13 @@ WriteMakefile(
     PREREQ_PM           => {
 
         # prereqs
+        'WWW::Mechanize'                => '1.60',
         'WWW::Scraper::ISBN'            => '0.25',
         'WWW::Scraper::ISBN::Driver'    => '0.18',
-        'WWW::Mechanize'                => '1.60',
 
         # build/test prereqs
-        'Test::More'                    => '0.70',
-        'IO::File'                      => '0'
+        'IO::File'                      => '0',
+        'Test::More'                    => '0.70'
 
     }
 );

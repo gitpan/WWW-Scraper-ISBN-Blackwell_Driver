@@ -1,5 +1,10 @@
 Revision history for Perl extension WWW-Scraper-ISBN-Blackwell_Driver.
 
+0.04    2013-03-10
+        - added isbn-check.pl to examples.
+        - License updated consistently to Artistic License v2.0.
+        - META updates.
+
 0.03    2012-12-16
         - site stats have been updated, failing test fixed.
         - change file dates changed to meet W3CDTF standards.
