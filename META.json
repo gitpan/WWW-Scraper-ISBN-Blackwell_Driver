@@ -1,6 +1,6 @@
 {
     "name": "WWW-Scraper-ISBN-Blackwell_Driver",
-    "version": "0.04",
+    "version": "0.05",
     "abstract": "Search driver for Blackwell's online book catalog",
     "author": ["Barbie <barbie@cpan.org>"],
 
@@ -29,6 +29,7 @@
         },
         "test" : {
             "requires": {
+                "Data::Dumper": "0",
                 "IO::File": "0",
                 "Test::More": "0.70"
             },
@@ -44,7 +45,7 @@
     "provides": {
         "WWW::Scraper::ISBN::Blackwell_Driver": {
             "file": "lib/WWW/Scraper/ISBN/Blackwell_Driver.pm",
-            "version": "0.04"
+            "version": "0.05"
         }
     },
     "no_index": {
@@ -53,6 +54,11 @@
 
     "resources": {
         "license": "http://www.perlfoundation.org/artistic_license_2_0",
-        "bugtracker": { "web": "http://rt.cpan.org/Public/Dist/Display.html?Name=WWW-Scraper-ISBN-Blackwell_Driver" }
+        "bugtracker": { "web": "http://rt.cpan.org/Public/Dist/Display.html?Name=WWW-Scraper-ISBN-Blackwell_Driver" },
+        "repository": {
+            "url": "git://github.com/barbie/www-scraper-isbn-blackwell_driver.git",
+            "web": "http://github.com/barbie/www-scraper-isbn-blackwell_driver",
+            "type": "git"
+        }
     }
 }
