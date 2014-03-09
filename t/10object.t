@@ -25,7 +25,7 @@ my %tests = (
         [ 'is',     'width',        '191'               ],
         [ 'is',     'height',       '235'               ],
         [ 'is',     'weight',       '1021'              ],
-        [ 'like',   'image_link',   qr|http://bookshop.blackwell.co.uk/jsp/display_large_jacket.jsp;jsessionid=[\w.]+\?isbn=9781558607019| ],
+        [ 'is',     'image_link',   'http://bookshop.blackwell.co.uk/images/jackets/l/15/1558607013.jpg' ],
         [ 'is',     'thumb_link',   'http://bookshop.blackwell.co.uk/images/jackets/m/15/1558607013.jpg' ],
         [ 'like',   'description',  qr|Most Perl programmers were originally trained as C and Unix programmers,| ],
         [ 'is',     'book_link',    'http://bookshop.blackwell.co.uk/jsp/search_results.jsp?wcp=1&quicksearch=1&cntType=&searchType=keywords&searchData=9781558607019&x=10&y=10' ]
@@ -44,7 +44,7 @@ my %tests = (
         [ 'is',     'width',        129                 ],
         [ 'is',     'height',       198                 ],
         [ 'is',     'weight',       200                 ],
-        [ 'like',   'image_link',   qr|http://bookshop.blackwell.co.uk/jsp/display_large_jacket.jsp;jsessionid=[\w.]+\?isbn=9780571239566| ],
+        [ 'is',     'image_link',   'http://bookshop.blackwell.co.uk/images/jackets/l/05/0571239560.jpg' ],
         [ 'is',     'thumb_link',   'http://bookshop.blackwell.co.uk/images/jackets/m/05/0571239560.jpg' ],
         [ 'like',   'description',  qr|Ian Curtis left behind a legacy rich in artistic genius| ],
         [ 'is',     'book_link',    'http://bookshop.blackwell.co.uk/jsp/search_results.jsp?wcp=1&quicksearch=1&cntType=&searchType=keywords&searchData=9780571239566&x=10&y=10' ]

@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 use vars qw($VERSION @ISA);
-$VERSION = '0.05';
+$VERSION = '0.06';
 
 #--------------------------------------------------------------------------
 
@@ -126,8 +126,10 @@ sub search {
     ($data->{height})       = $html =~ m!<td width="25%"><b>Height \(mm\)</b></td><td width="25%">([^<]+)</td>!si;
     ($data->{width})        = $html =~ m!<td width="25%"><b>Width \(mm\)</b></td><td width="25%">([^<]+)</td>!si;
 
-    ($data->{image},$data->{thumb})      
-                                = $html =~ m!<a href="([^"]+)"><img class="jacket".*?src="([^"]+)" /></a>!;
+    ($data->{image},$data->{thumb})
+                            = $html =~ m!<a href="(/images/jackets/l/\d+/\d+.jpg)" data-lightbox="multi-image"><img class="jacket".*?src="(/images/jackets/m/\d+/\d+.jpg)" /></a>!si;
+
+    $data->{image} = REFERER . $data->{image}   if($data->{image});
     $data->{thumb} = REFERER . $data->{thumb}   if($data->{thumb});
 
     $data->{publisher} =~ s/&#0?39;/'/g;
@@ -285,7 +287,7 @@ be forthcoming, please feel free to (politely) remind me.
 
 =head1 COPYRIGHT & LICENSE
 
-  Copyright (C) 2010-2013 Barbie for Miss Barbell Productions
+  Copyright (C) 2010-2014 Barbie for Miss Barbell Productions
 
   This distribution is free software; you can redistribute it and/or
   modify it under the Artistic Licence v2.
